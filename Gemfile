@@ -40,6 +40,12 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem "rspec-rails"
   gem "pry-byebug"
+  gem "factory_bot_rails"
+  gem "faker"
+end
+
+group :test do
+  gem "database_cleaner"
 end
 
 group :development do
