@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  include_context 'with parsed response'
+
   describe '#show' do
     shared_examples 'call UserIdentifierService once' do
       it do
@@ -22,7 +24,6 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    let(:parsed_response) { JSON.parse(response.body, symbolize_names: true) }
     let(:income_params) do
       {
         first_name: 'John',
