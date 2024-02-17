@@ -1,9 +1,4 @@
-class UserIdentifierService
-  class Result < Struct.new(:success, :output, :error_msg, :status, keyword_init: true)
-    def success?
-      self.success == true
-    end
-  end
+class UserIdentifierService < BaseService
   class UserMissingError < StandardError; end
 
   USERS_FILE_PATH = Rails.root.join('json_data/users.json')
