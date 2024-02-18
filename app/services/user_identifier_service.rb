@@ -1,6 +1,4 @@
 class UserIdentifierService < BaseService
-  class UserMissingError < StandardError; end
-
   USERS_FILE_PATH = Rails.root.join('json_data/users.json')
   INTERNAL_SERVER_ERR = 'Something went wrong'
   NOT_FOUND = 'Not found'

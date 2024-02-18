@@ -4,4 +4,8 @@ class BaseService
       self.success == true
     end
   end
+  class ToLateToReserveError < StandardError; end
+  class WrongTimesError < StandardError; end
+  class ReservationOverlapError < StandardError; end
+  class UserMissingError < StandardError; end
 end
