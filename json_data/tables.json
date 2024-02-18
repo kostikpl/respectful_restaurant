@@ -1,0 +1,10 @@
+{
+    "1": {
+        "priceCents": 15000,
+        "capacity": 2
+    },
+    "2": {
+        "priceCents": 20000,
+        "capacity": 4
+    }
+}
