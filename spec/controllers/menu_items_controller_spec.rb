@@ -2,22 +2,10 @@ require 'rails_helper'
 
 RSpec.describe MenuItemsController, type: :controller do
   include_context 'with parsed response'
+  include_context 'with response status'
+  include_context 'with response body'
 
   describe '#index' do
-    shared_examples 'returns correct status' do
-      it do
-        subject
-        expect(response.status).to eq(expected_status)
-      end
-    end
-
-    shared_examples 'returns correct body' do
-      it do
-        subject
-        expect(parsed_response).to eq(expected_response)
-      end
-    end
-
     context 'when request is successful' do
       subject { get :index }
       let(:expected_status) { 200 }

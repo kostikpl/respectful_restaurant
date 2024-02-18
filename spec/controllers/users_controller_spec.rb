@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   include_context 'with parsed response'
+  include_context 'with response status'
+  include_context 'with response body'
 
   describe '#show' do
     shared_examples 'call UserIdentifierService once' do
@@ -14,13 +16,6 @@ RSpec.describe UsersController, type: :controller do
         expect(user_identifier_instance_double).to receive(:call)
 
         subject
-      end
-    end
-
-    shared_examples 'returns correct status' do
-      it do
-        subject
-        expect(response.status).to eq(expected_status)
       end
     end
 
@@ -47,20 +42,20 @@ RSpec.describe UsersController, type: :controller do
 
     context 'when request is successful' do
       let(:user_id) { SecureRandom.uuid }
-      let(:output) { { id: user_id } }
+      let(:service_output) { { id: user_id } }
+      let(:expected_response) { service_output }
       let(:expected_status) { 200 }
       let(:result) do
-        UserIdentifierService::Result.new(success: true, output: output, status: expected_status)
+        UserIdentifierService::Result.new(
+          success: true,
+          output: service_output,
+          status: expected_status
+        )
       end
 
       it_behaves_like 'returns correct status'
-
+      it_behaves_like 'returns correct body'
       it_behaves_like 'call UserIdentifierService once'
-
-      it 'returns correct body' do
-        subject
-        expect(parsed_response).to eq(output)
-      end
     end
 
     context 'when request is not successful' do

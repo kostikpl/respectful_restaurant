@@ -4,9 +4,10 @@ class CreateReservationService < BaseService
   end
 
   def call
+    # validate client exists?
+    # validate table exists?
     # validate time 2 hours before
     # validate overlap
-    # create stuff
   end
 
   private
