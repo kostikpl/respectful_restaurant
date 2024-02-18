@@ -1,6 +1,5 @@
 class UserIdentifierService < BaseService
   USERS_FILE_PATH = Rails.root.join('json_data/users.json')
-  INTERNAL_SERVER_ERR = 'Something went wrong'
   NOT_FOUND = 'Not found'
 
   def initialize(params:)

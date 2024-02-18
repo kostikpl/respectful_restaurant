@@ -1,7 +1,9 @@
 class BaseService
+  INTERNAL_SERVER_ERR = 'Something went wrong'
+
   class Result < Struct.new(:success, :output, :error_msg, :status, keyword_init: true)
     def success?
-      self.success == true
+      !!self.success
     end
   end
   class ToLateToReserveError < StandardError; end
