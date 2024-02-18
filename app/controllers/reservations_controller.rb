@@ -10,7 +10,13 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    #
+    result = ReservationsListService.new.call
+
+    if result.success?
+      render json: result.output, status: result.status
+    else
+      render json: { message: result.error_msg }, status: result.status
+    end
   end
 
   private
