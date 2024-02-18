@@ -1,6 +1,5 @@
 class ReservationsController < ApplicationController
   def create
-    # binding.pry
     result = CreateReservationService.new(params: reservation_params).call
 
     if result.success?
