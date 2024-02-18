@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserIdentifierService do
   subject do
-    described_class.new(params).call
+    described_class.new(params: params).call
   end
   let(:first_name) { Faker::Name.first_name }
   let(:last_name) { Faker::Name.last_name }
@@ -54,7 +54,7 @@ RSpec.describe UserIdentifierService do
     it_behaves_like 'returns correct status'
   end
 
-  context 'when user is not identified' do
+  context 'when user was not identified' do
     context 'when file with users is not exists' do
       before do
         allow(File).to receive(:read).and_raise(Errno::ENOENT)
@@ -93,7 +93,7 @@ RSpec.describe UserIdentifierService do
   describe '#load_users' do
     it 'read and parse file with users' do
       expect {
-        described_class.new(params).send(:load_users)
+        described_class.new(params: {}).send(:load_users)
       }.not_to raise_error
     end
   end

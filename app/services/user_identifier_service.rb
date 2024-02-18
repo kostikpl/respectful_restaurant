@@ -5,7 +5,7 @@ class UserIdentifierService < BaseService
   INTERNAL_SERVER_ERR = 'Something went wrong'
   NOT_FOUND = 'Not found'
 
-  def initialize(params)
+  def initialize(params:)
     @first_name = params[:first_name]
     @last_name = params[:last_name]
   end
