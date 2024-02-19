@@ -1,0 +1,2 @@
+class TableStatistic < ApplicationRecord
+end
