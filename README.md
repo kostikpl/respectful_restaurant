@@ -1,24 +1,13 @@
-# README
+FEATURE 1 left:
+memorize users(singleton)
+service specs stuff to shared
+validations to validator(reservation service)
+null: false in db
+reservation#index
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+controller spec
+service spec
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+FEATURE 2 left:
+controller specs
+propper service testing with timecop
