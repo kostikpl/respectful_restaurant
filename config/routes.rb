@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :menu_items, only: :index
   resource :user, only: :show
   resources :reservations, only: [:index, :create]
+  resources :bills, only: :create
 end

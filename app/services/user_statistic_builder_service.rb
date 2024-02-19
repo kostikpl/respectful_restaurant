@@ -5,8 +5,13 @@ class UserStatisticBuilderService < BaseService
   end
 
   def call
+    # client is asking for a bill and we're calculating stats
+    # maybe later on we'll rename service and extend it with additional
+    # functionality like giving tips, top up restaurant balance
     create_table_statistic
-    Result.new(success: true, output: {})
+    Result.new(success: true, output: {}, status: 201)
+  rescue => e
+    Result.new(success: false, status: 500, error_msg: INTERNAL_SERVER_ERR)
   end
 
   private
