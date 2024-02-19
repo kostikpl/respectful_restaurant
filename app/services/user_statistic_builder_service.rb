@@ -1,8 +1,7 @@
 class UserStatisticBuilderService < BaseService
   def initialize(params:)
-    @reservation_id = 6#params[:reservation_id]
+    @reservation_id = params[:reservation_id].to_i
     @left_at = DateTime.now
-    # @customer_id = params[:customer_id]
   end
 
   def call
@@ -19,7 +18,7 @@ class UserStatisticBuilderService < BaseService
         r.client_id AS customer_id,
         COALESCE(SUM(o.quantity), 0) AS dishes_count,
         COALESCE(SUM(mi.price_cents * o.quantity), 0) AS total_bill_cents,
-        EXTRACT(EPOCH FROM (#{@left_at} - r.starts_at)) AS time_spent_seconds
+        EXTRACT(EPOCH FROM ('#{@left_at}' - r.starts_at)) AS time_spent_seconds
       FROM
         reservations r
       LEFT JOIN
@@ -29,7 +28,7 @@ class UserStatisticBuilderService < BaseService
       WHERE
         r.id = #{@reservation_id}
       GROUP BY
-        r.client_id;
+        r.client_id, r.starts_at;
     SQL
   end
 end
